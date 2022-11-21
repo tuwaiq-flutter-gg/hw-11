@@ -52,7 +52,7 @@ main() {
   //print(numberOfList([1, 2, 3, 4, 5, 6, 7]));
 }
 
-//Q1 i TRIED -_-
+//Q1
 allergy(int score) {
   num x = score;
   Map<String, int> allergies = {
