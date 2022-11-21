@@ -1,6 +1,6 @@
 # Homework 11
 
-### Given a person's allergy score, determine whether or not they're allergic to a given item, and their full list of allergies. An allergy test produces a single numeric score which contains the information about all the allergies the person has (that they were tested for).
+1. Given a person's allergy score, determine whether or not they're allergic to a given item, and their full list of allergies. An allergy test produces a single numeric score which contains the information about all the allergies the person has (that they were tested for).
 
 The list of items (and their value) that were tested are:
 
@@ -13,11 +13,12 @@ The list of items (and their value) that were tested are:
 * pollen (64)
 * cats (128)
 
-1. Create an enum `allergy` with constants "eggs, peanuts ... etc" from the list of item above.
+So for example if Amal is allergic to peanuts and chocolate, he gets a score of 34. Now, given just that score of 34, your program should be able to say:
+Whether Amal is allergic to any one of those allergens listed above. All the allergens Amal is allergic to.
 
-2. Using `Switch-statement` write a program that takes a number reference from the user (1,2.. etc, from the list above) and prints the allergy name based on the user score. 
+2. write a program that prints out all the elements of the list that are less than 3, and the total of all the elements in the list greater than 5. 
 
-3. Use `default` if the score doesn't match any of the allergies in the list.
+3. write a program that that take a string from the user, and print out whether this string is a palindrome or not. A palindrome is a string that reads the same forwards and backwards for example: reviver is a palindrome.
 
 4. Create a program that asks the user for a number and then prints out a list of all the divisors of that number.
 
