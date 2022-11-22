@@ -4,9 +4,9 @@ import 'package:more/iterable.dart';
 import 'package:more/more.dart';
 
 void main() {
-  print(birthdayTracker());
-  // Question 1
   // Question 2
+  List<int> arr = [1, 2, 3, 4, 5, 6, 7];
+  printList(list: arr);
 
   // Question 3
   print("Enter a string to determine if its palindrome or not");
@@ -32,13 +32,21 @@ void main() {
   reverseSentance();
 
 // Question 8
+  //guessGame();
+
 // Question 9
+  RockPaperScissors();
+
 // Question 10
+  print(passwordGenerator());
+
 // Question 11
+  print(birthdayTracker());
+
   // Question 12
   List<int> list = [16, 25, 8, 2, 0, 9];
   print(FirstAndLast(numberOfList: list));
-}
+} //end of main
 
 // Question 1
 
@@ -54,9 +62,57 @@ enum allergy {
 
   final int? score;
   const allergy({this.score});
+
+  valueByScore({required int score}) {
+    if (score == 1)
+      return allergy.eggs;
+    else if (score == 2)
+      return allergy.peanuts;
+    else if (score == 4)
+      return allergy.shellfish;
+    else if (score == 8)
+      return allergy.strawberries;
+    else if (score == 16)
+      return allergy.tomatoes;
+    else if (score == 32)
+      return allergy.chocolate;
+    else if (score == 64)
+      return allergy.pollen;
+    else
+      return allergy.cats;
+  }
+
+  listOfallergies({required int score}) {
+    List<String> list = [];
+    //int remaining = score;
+    List<int> scores = [128, 64, 32, 16, 8, 4, 2, 1];
+    for (int i = 0; i < scores.length; i++) {
+      if (score > scores[i]) {
+        score -= scores[i];
+        list.add(valueByScore(score: scores[i]));
+      }
+    }
+    return list;
+  }
+
+  void main() {
+    print(listOfallergies(score: 34));
+  }
 }
 
 //Question 2
+
+printList({required List<int> list}) {
+  int count = 0;
+  List<int> newArrary = [];
+
+  for (int i = 0; i < list.length; i++) {
+    if (list[i] < 3) newArrary.add(list[i]);
+    if (list[i] > 5) count++;
+  }
+  print("This the elements that is smaller than 3 : \n" +
+      "$newArrary \n and the number of the elements that is greater than 5 is : $count");
+}
 
 //Question 3
 isPalindrome({required String str}) {
@@ -120,38 +176,76 @@ void reverseSentance() {
 }
 
 //Question 8
+// guessGame() {
+//   Random random = Random();
+//   int num;
+//   String Number = "";
+//   int numberOfGuesses = 0;
+
+//   print("Try to guess a number from 4 digits");
+//   String? str = stdin.readLineSync();
+
+//   for (int i = 0; i < 4; i++) {
+//     num = random.nextInt(10);
+//     Number += num.toString();
+//   }
+
+// }
 
 //Question 9
-void RockPaperScissors(String userOption) {
+void RockPaperScissors() {
   print("Let play Rock-Paper-Scissors, choose an option: ");
-  String? str = stdin.readLineSync()?.trim().toLowerCase();
+  String? userOption = stdin.readLineSync()?.trim().toLowerCase();
   List<String> options = ["rock", "paper", "scissors"];
 
   Random random = Random();
   int num = random.nextInt(3);
   String computerOption = options[num];
 
-//  if(computerOption.toLowerCase() == options[0] && );
+  if (computerOption == userOption)
+    print("We have a tie!");
+  else if (computerOption == "rock" && userOption == "paper" ||
+      computerOption == "paper" && userOption == "scissors" ||
+      computerOption == "scissors" && userOption == "rock")
+    print("The computer chose $computerOption so, You win");
+  else
+    print("The computer chose $computerOption so, You lose");
 }
 
 //Question 10
-String? passwordGenerator() {}
+String? passwordGenerator() {
+  String validChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+      "abcdefghijklmnopqrstuvwxyz" +
+      "1234567890" +
+      '!@#\$%&*()/';
+
+  String password = "";
+  List arr = validChar.split("").toList();
+
+  Random random = Random();
+  for (int i = 0; i <= 16; i++) {
+    // set the password length to 16
+    int num = random.nextInt(arr.length); // generate a random number
+    password += arr[num];
+  }
+  return password;
+}
 
 //Question 11
 String? birthdayTracker() {
   Map<String, String> BODmap = {
-    "Sara": "28-05-1995",
-    "Reema": "01-09-1992",
-    "Noura": "15-05-1999",
-    "Raghad": "09-07-2002",
+    "sara": "28-05-1995",
+    "reema": "01-09-1992",
+    "noura": "15-05-1999",
+    "raghad": "09-07-2002",
   };
 
   print("Which of your friends you want to know their birthday:");
   String? name = stdin.readLineSync()?.trim().toLowerCase();
-  
-  if (BODmap != null) {
-    return BODmap['$name'];
-  }
+  if (BODmap[name] != null)
+    return BODmap[name];
+  else
+    return " $name's birthdary isn't found ";
 }
 
 // Question 12
